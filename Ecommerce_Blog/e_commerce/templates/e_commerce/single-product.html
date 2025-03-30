@@ -1,0 +1,27 @@
+{% extends 'e_commerce/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="bg-sand padding-large">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<a href="#" class="product-image"><img src="{{ livre.couverture.url }}" width="413" height="602"></a>
+			</div>
+
+			<div class="col-md-6 pl-5">
+				<div class="product-detail">
+					<h1>{{ livre.titre}}</h1>
+					<span class="price colored">{{ livre.prix }} FCFA</span>
+
+					<p>{{ livre.resume }}</p>
+
+					<button type="submit" name="add-to-cart" value="{{ livre.id }}" class="button">Add to cart</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock content %}
