@@ -446,7 +446,7 @@ h1,
 h2,
 h3 {
   margin: 25px 0;
-  text-transform: capitalize;
+  text-transform: normal;
 }
 
 h5,
@@ -1727,6 +1727,9 @@ img.post-image {
 
 .top-content .right-element {
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .top-content .right-element .for-buy {

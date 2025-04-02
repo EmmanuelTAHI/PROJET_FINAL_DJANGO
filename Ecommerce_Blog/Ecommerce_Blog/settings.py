@@ -85,6 +85,13 @@ DATABASES = {
     }
 }
 
+# Durée des sessions
+SESSION_COOKIE_AGE = 30 * 24 * 60 * 60  # 30 jours
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Ne pas fermer la session à la fermeture du navigateur
+SESSION_COOKIE_SECURE = True  # Activer en HTTPS uniquement (mettre False en dev)
+SESSION_COOKIE_HTTPONLY = True  # Empêche les attaques XSS
+SESSION_COOKIE_SAMESITE = 'Lax'  # Sécurise les requêtes intersites
+
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'  # Ou une autre page après connexion

@@ -45,13 +45,24 @@ def single_product(request, livre_id):
 
 def connexion(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').strip()
         password = request.POST.get('password')
-        user = authenticate(request, username=username.strip(), password=password)
+        remember_me = request.POST.get('remember_me')  # Vérifie si "Se souvenir de moi" est coché
+
+        user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
+
+            if remember_me:
+                # Prolonge la session à 30 jours (comme Amazon)
+                request.session.set_expiry(30 * 24 * 60 * 60)  # 30 jours en secondes
+            else:
+                # La session expire à la fermeture du navigateur
+                request.session.set_expiry(0)
+
             return redirect('index')
+
         else:
             messages.error(request, "Nom d'utilisateur ou mot de passe incorrect.")
 
